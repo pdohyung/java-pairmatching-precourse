@@ -1,10 +1,12 @@
 package pairmatching.view;
 
+import java.util.List;
+
 import static java.text.MessageFormat.*;
 
 public class OutputView {
     private static final String ERROR_MESSAGE_FORMAT = "[ERROR] {0}";
-    private static final String PRINT_COURSE_AND_MISSION_MESSAGE = "#############################################\n" +
+    private static final String PRINT_COURSE_AND_MISSION_MESSAGE = "\n#############################################\n" +
             "과정: 백엔드 | 프론트엔드\n" +
             "미션:\n" +
             "  - 레벨1: 자동차경주 | 로또 | 숫자야구게임\n" +
@@ -20,5 +22,9 @@ public class OutputView {
 
     public void printCourseAndMission() {
         System.out.println(PRINT_COURSE_AND_MISSION_MESSAGE);
+    }
+
+    public void printPairMatchingResult(List<String> pairResult) {
+        pairResult.forEach(System.out::println);
     }
 }
