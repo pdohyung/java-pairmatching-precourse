@@ -15,6 +15,18 @@ public class MatchingOption {
         this.mission = mission;
     }
 
+    public Course getCourse() {
+        return course;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public Mission getMission() {
+        return mission;
+    }
+
     @Override
     public String toString() {
         return "MatchingOption{" +
