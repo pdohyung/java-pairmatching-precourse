@@ -7,6 +7,8 @@ import pairmatching.view.OutputView;
 
 import java.util.List;
 
+import static pairmatching.util.Constants.*;
+
 public class PairMatchingController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -47,7 +49,7 @@ public class PairMatchingController {
     private void findPairMatching() {
         try {
             MatchingOption matchingOption = retryMatchingOption();
-            pairMatchingRepository.findPairMatching(matchingOption);
+            outputView.printPairMatchingResult(pairMatchingRepository.findPairMatching(matchingOption));
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
         }
@@ -55,8 +57,19 @@ public class PairMatchingController {
 
     private void matchingPair() {
         MatchingOption matchingOption = retryMatchingOption();
+        while (matchingOptionExist(matchingOption)) {
+            String answer = inputView.inputExistMatchingOption();
+            if (answer.equals(YES)) {
+                break;
+            }
+            matchingOption = retryMatchingOption();
+        }
         List<String> pairMatchingResult = pairMatchingRepository.createPairMatching(matchingOption);
         outputView.printPairMatchingResult(pairMatchingResult);
+    }
+
+    private boolean matchingOptionExist(MatchingOption matchingOption) {
+        return pairMatchingRepository.getPairMatchingRepository().containsKey(matchingOption);
     }
 
     private void resetPairMatching() {

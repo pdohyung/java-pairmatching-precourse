@@ -4,6 +4,8 @@ import pairmatching.domain.enums.Course;
 import pairmatching.domain.enums.Level;
 import pairmatching.domain.enums.Mission;
 
+import java.util.Objects;
+
 public class MatchingOption {
     private Course course;
     private Level level;
@@ -34,5 +36,20 @@ public class MatchingOption {
                 ", level=" + level +
                 ", mission=" + mission +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MatchingOption that = (MatchingOption) o;
+        return course == that.course &&
+                level == that.level &&
+                mission == that.mission;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(course, level, mission);
     }
 }

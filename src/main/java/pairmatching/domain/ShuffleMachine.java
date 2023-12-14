@@ -24,7 +24,7 @@ public class ShuffleMachine {
     }
 
     private List<String> createCrews(Course course) {
-        if (course.equals(BACKEND)) {
+        if (course.equals(FRONTEND)) {
             return createFrontCrews();
         }
         return createBackendCrews();
@@ -48,11 +48,11 @@ public class ShuffleMachine {
     private List<String> createBackendCrews() {
         List<String> backCrews = new ArrayList<>();
         try {
-            File frontendCrews = new File("src/main/resources/frontend-crew.md");
-            BufferedReader frontendCrewsReader = new BufferedReader(new FileReader(frontendCrews));
-            String frontendCrew;
-            while ((frontendCrew = frontendCrewsReader.readLine()) != null) {
-                backCrews.add(frontendCrew);
+            File backendCrews = new File("src/main/resources/backend-crew.md");
+            BufferedReader backendCrewsReader = new BufferedReader(new FileReader(backendCrews));
+            String backendCrew;
+            while ((backendCrew = backendCrewsReader.readLine()) != null) {
+                backCrews.add(backendCrew);
             }
         } catch (IOException exception) {
             throw new RuntimeException(exception);
