@@ -36,10 +36,20 @@ public class PairMatchingController {
 
         if (chooseFunction.equals("2")) {
             outputView.printCourseAndMission();
+            findPairMatching();
         }
 
         if (chooseFunction.equals("3")) {
-            resetPair();
+            resetPairMatching();
+        }
+    }
+
+    private void findPairMatching() {
+        try {
+            MatchingOption matchingOption = retryMatchingOption();
+            pairMatchingRepository.findPairMatching(matchingOption);
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
         }
     }
 
@@ -49,7 +59,7 @@ public class PairMatchingController {
         outputView.printPairMatchingResult(pairMatchingResult);
     }
 
-    private void resetPair() {
+    private void resetPairMatching() {
         pairMatchingRepository.deleteAllPairMatching();
         outputView.printResetPairMatching();
     }

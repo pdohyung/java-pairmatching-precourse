@@ -8,6 +8,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static pairmatching.util.ErrorMessage.*;
+
 public class PairMatchingRepository {
     private final Map<MatchingOption, List<String>> pairMatchingRepository;
 
@@ -40,6 +42,16 @@ public class PairMatchingRepository {
             pairedCrews.set(pairedCrews.size() - 1, lastPair);
         }
         return pairedCrews;
+    }
+
+    public List<String> findPairMatching(MatchingOption matchingOption) {
+        List<String> pairs = pairMatchingRepository.get(matchingOption);
+
+        if (pairs == null) {
+            throw new IllegalArgumentException(INVALID_MATCHING_OPTION.getErrorMessage());
+        }
+
+        return pairs;
     }
 
     public void deleteAllPairMatching() {

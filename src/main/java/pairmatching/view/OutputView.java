@@ -5,7 +5,7 @@ import java.util.List;
 import static java.text.MessageFormat.*;
 
 public class OutputView {
-    private static final String ERROR_MESSAGE_FORMAT = "[ERROR] {0}";
+    private static final String ERROR_MESSAGE_FORMAT = "\n[ERROR] {0}";
     private static final String PRINT_RESET_PAIR_MATCHING_MESSAGE = "\n초기화 되었습니다.";
     private static final String PRINT_PAIR_MATCHING_RESULT_START_MESSAGE = "\n페어 매칭 결과입니다.";
     private static final String PRINT_COURSE_AND_MISSION_MESSAGE = "\n#############################################\n" +
