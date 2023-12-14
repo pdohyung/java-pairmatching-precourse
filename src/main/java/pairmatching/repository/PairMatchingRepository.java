@@ -41,4 +41,8 @@ public class PairMatchingRepository {
         }
         return pairedCrews;
     }
+
+    public void deleteAllPairMatching() {
+        pairMatchingRepository.clear();
+    }
 }

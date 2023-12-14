@@ -30,7 +30,16 @@ public class PairMatchingController {
 
     private void performFunction(String chooseFunction) {
         if (chooseFunction.equals("1")) {
+            outputView.printCourseAndMission();
             matchingPair();
+        }
+
+        if (chooseFunction.equals("2")) {
+            outputView.printCourseAndMission();
+        }
+
+        if (chooseFunction.equals("3")) {
+            resetPair();
         }
     }
 
@@ -38,7 +47,11 @@ public class PairMatchingController {
         MatchingOption matchingOption = retryMatchingOption();
         List<String> pairMatchingResult = pairMatchingRepository.createPairMatching(matchingOption);
         outputView.printPairMatchingResult(pairMatchingResult);
-        return;
+    }
+
+    private void resetPair() {
+        pairMatchingRepository.deleteAllPairMatching();
+        outputView.printResetPairMatching();
     }
 
     private String retryChooseFunction() {
