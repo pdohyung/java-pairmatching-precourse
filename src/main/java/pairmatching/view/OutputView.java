@@ -7,6 +7,7 @@ import static java.text.MessageFormat.*;
 public class OutputView {
     private static final String ERROR_MESSAGE_FORMAT = "[ERROR] {0}";
     private static final String PRINT_RESET_PAIR_MATCHING_MESSAGE = "\n초기화 되었습니다.";
+    private static final String PRINT_PAIR_MATCHING_RESULT_START_MESSAGE = "\n페어 매칭 결과입니다.";
     private static final String PRINT_COURSE_AND_MISSION_MESSAGE = "\n#############################################\n" +
             "과정: 백엔드 | 프론트엔드\n" +
             "미션:\n" +
@@ -15,7 +16,7 @@ public class OutputView {
             "  - 레벨3: \n" +
             "  - 레벨4: 성능개선 | 배포\n" +
             "  - 레벨5: \n" +
-            "############################################\n";
+            "############################################";
 
     public void printErrorMessage(String errorMessage) {
         System.out.println(format(ERROR_MESSAGE_FORMAT, errorMessage));
@@ -26,6 +27,7 @@ public class OutputView {
     }
 
     public void printPairMatchingResult(List<String> pairResult) {
+        System.out.println(PRINT_PAIR_MATCHING_RESULT_START_MESSAGE);
         pairResult.forEach(System.out::println);
     }
 
